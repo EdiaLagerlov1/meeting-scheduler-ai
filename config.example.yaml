@@ -1,0 +1,30 @@
+gmail:
+  filters:
+    senders: []  # Empty = match all senders
+    subject_keywords:
+      - "meeting"
+      - "appointment"
+      - "sync"
+    labels: []  # Empty = match all labels
+    read_status: "any"  # Options: unread, read, any
+
+calendar:
+  calendar_id: "primary"
+  default_duration_minutes: 60
+
+llm:
+  provider: "openai"  # Options: openai, anthropic
+  model: "gpt-3.5-turbo"
+  api_key: "${OPENAI_API_KEY}"  # Use environment variable
+
+agent:
+  schedule_interval_minutes: 30
+  max_emails_per_run: 50
+  mark_as_read_after_processing: true
+
+storage:
+  database_path: "./data/processed_emails.db"
+
+logging:
+  level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR
+  file_path: "./logs/agent.log"
